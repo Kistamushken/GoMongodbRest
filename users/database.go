@@ -51,7 +51,7 @@ func addIndexToSignatureEmails(db *mgo.Database) {
 Martini lets you inject parameters for routing handlers
 by using `context.Map()`. I'll pass each route handler
 a instance of a *mgo.Database, so they can retrieve
-and insert signatures to and from that database.
+and insert users to and from that database.
 For more information, check out:
 http://blog.gopheracademy.com/day-11-martini
 */

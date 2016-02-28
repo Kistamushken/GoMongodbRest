@@ -8,14 +8,12 @@ import (
 )
 
 /*
-Wrap the Martini server struct.
-*/
-
-/*
 Create a new *martini.ClassicMartini server.
 We'll use a JSON renderer and our MongoDB
-database handler. We define two routes:
-"GET /signatures" and "POST /signatures".
+database handler. We define three routes:
+"GET /users"
+"POST /users"
+"PUT /users"
 */
 func NewServer(session *DatabaseSession) *martini.ClassicMartini {
 	// Create the server and set up middleware.
@@ -29,8 +27,6 @@ func NewServer(session *DatabaseSession) *martini.ClassicMartini {
 	m.Get("/users", func(r render.Render, db *mgo.Database) {
 		r.JSON(200, fetchAllUsers(db))
 	})
-
-	m.Get("/users/")
 
 	// Define the "POST /users" route.
 	m.Post("/users", binding.Json(User{}),
@@ -57,6 +53,7 @@ func NewServer(session *DatabaseSession) *martini.ClassicMartini {
 			}
 		})
 
+	// Define the "PUT /users" route.
 	m.Put("/users",binding.Json(User{}),
 		func(user User,
 		r render.Render,

@@ -6,9 +6,8 @@ import (
 )
 
 /*
-Each signature is composed of a first name, last name,
-email, age, and short message. When represented in
-JSON, ditch TitleCase for snake_case.
+Each user is composed of a first name, last name,
+email, age.
 */
 type User struct {
 	Id      bson.ObjectId `json:"id" bson:"_id,omitempty"`
@@ -26,9 +25,8 @@ func (user *User) valid() bool {
 }
 
 /*
-I'll use this method when displaying all signatures for
-"GET /signatures". Consult the mgo docs for more info:
-http://godoc.org/labix.org/v2/mgo
+I'll use this method when displaying all users for
+"GET /users".
 */
 func fetchAllUsers(db *mgo.Database) []User {
 	users := []User{}

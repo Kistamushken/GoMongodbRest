@@ -1,6 +1,6 @@
 package main
 
-import "users"
+import "github.com/Kistamushken/GoMongodbRest/users"
 /*
 Create a new MongoDB session, using a database
 named "users". Create a new server using
